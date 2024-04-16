@@ -1448,6 +1448,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 301d6bdc65c69b2459b109b5d82a4bb5, type: 3}
+--- !u!1 &1095846502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4736642631442977455, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
+  m_PrefabInstance: {fileID: 4736642631269302823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1095846509
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095846502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1095846510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095846502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!4 &1098113932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3125754379117651897, guid: 301d6bdc65c69b2459b109b5d82a4bb5, type: 3}
@@ -2650,11 +2686,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4736642631442977453, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
+      propertyPath: gravity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4736642631442977455, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
       propertyPath: m_Name
       value: Joueur
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4736642631445214174, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4736642631442977449, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9f67c849541a6641b77222b0c39a8ef, type: 3}
 --- !u!1001 &7102283576011431763
 PrefabInstance:
