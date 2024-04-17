@@ -50,7 +50,7 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.15 || Mathf.Abs(Input.GetAxis("Vertical")) > 0.15)
+        if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2 || Mathf.Abs(Input.GetAxis("Vertical")) > 0.2)
         {
             xSpeed = Input.GetAxis("Horizontal");
             zSpeed = Input.GetAxis("Vertical");    
@@ -62,14 +62,15 @@ public class playerController : MonoBehaviour
             xSpeed = 0;
             zSpeed = 0;
             direction = new Vector2(0,0); 
+            speed = 0;
         }
 
         movement = new Vector3(direction.x, isGrounded ? 0 : -gravity, direction.y) * speed;
         this.GetComponent<CharacterController>().Move(movement * Time.deltaTime);
 
         Debug.Log(direction);
-        // DirectionAngle = Mathf.Atan2(-xSpeed, zSpeed) * Mathf.Rad2Deg;
-        // transform.eulerAngles = new Vector3(0, DirectionAngle, 0);
-        //xRotateBonhomme.localEulerAngles = new Vector3(-rb.velocity.magnitude*30, 0, 0);  
+        DirectionAngle = Mathf.Atan2(-zSpeed, -xSpeed) * Mathf.Rad2Deg;
+        transform.eulerAngles = new Vector3(0, DirectionAngle, 0);
+        xRotateBonhomme.localEulerAngles = new Vector3(speed*30, 0, 0);  
     }
 }

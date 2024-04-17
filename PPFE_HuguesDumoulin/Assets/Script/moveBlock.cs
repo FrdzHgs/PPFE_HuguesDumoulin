@@ -25,6 +25,14 @@ public class moveBlock : MonoBehaviour
             StartCoroutine(moveUp());
         }
 
+        if(Input.GetKey(keyBlock))
+        {
+            if(GameObject.Find("Tuto") != null)
+            {
+                GameObject.Find("Tuto").GetComponent<scriptTuto>().stopClavier();
+            }
+        }
+
         if(Input.GetKeyUp(keyBlock))
         {
             goUp = false;
