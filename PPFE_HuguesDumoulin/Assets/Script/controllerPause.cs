@@ -4,17 +4,20 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class controllerPause : MonoBehaviour
 {
-    private bool isPause = false;
+    public bool isPause = false;
     public GameObject UIPause;
-    public TMP_Text Result, Explication;
+    public TMP_Text Result, Explication, Conseil;
     public InputField playerInput;
     public CanvasScaler[] canvasArray;
     private int buttonSelect;
     private string verticalString,levelName;
     public Camera cameralvl;
+
+    public string[] listeConseil;
 
     void Start()
     {
@@ -48,12 +51,11 @@ public class controllerPause : MonoBehaviour
             switch(playerInput.text)
             {
                 case "Reprendre" :
-                    isPause = false;
-                    UIPause.SetActive(isPause);
+                    Time.timeScale = 1;
+                    StartCoroutine(setActive());
                     break;
 
                 case "Recommencer" :
-                    isPause = false;
                     levelName = SceneManager.GetActiveScene().name;
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                     break;
@@ -77,14 +79,19 @@ public class controllerPause : MonoBehaviour
         UIPause.SetActive(isPause);
         playerInput.ActivateInputField();
         playerInput.text = "";
-        Time.timeScale = 0;
         if(isPause)
         {
+            Time.timeScale = 0;
             cameralvl.rect = new Rect(0.5f,0.5f,0.5f,0.5f);
+
+            int rnd = new System.Random().Next(0,listeConseil.Length);
+            Conseil.text = Conseil.text.Replace("?",listeConseil[rnd]);
         }
         else
         {
+            Time.timeScale = 1;
             cameralvl.rect = new Rect(0,0,1,1);
+            Conseil.text = "Conseil :\n\t?";
         }
         foreach(CanvasScaler i in canvasArray)
         {
@@ -112,7 +119,7 @@ public class controllerPause : MonoBehaviour
 
             isVertical = !isVertical;
 
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSecondsRealtime(0.75f);
         }
     }
 }

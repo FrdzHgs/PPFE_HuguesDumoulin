@@ -30,6 +30,8 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        Debug.Log("test");
     }
 
     void OnTriggerEnter(Collider other)
