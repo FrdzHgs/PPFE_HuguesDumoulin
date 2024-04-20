@@ -47,7 +47,6 @@ public class controllerPause : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Return) && isPause)
         {
-            Debug.Log("caca");
             switch(playerInput.text)
             {
                 case "Reprendre" :
@@ -66,7 +65,6 @@ public class controllerPause : MonoBehaviour
                     break;
                 
                 default :
-                    Debug.Log(playerInput.text);
                     playerInput.text = "";
                     break;          
             }

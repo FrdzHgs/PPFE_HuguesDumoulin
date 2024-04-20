@@ -30,8 +30,6 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
-        Debug.Log("test");
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,10 +65,9 @@ public class playerController : MonoBehaviour
             speed = 0;
         }
 
-        movement = new Vector3(direction.x, isGrounded ? 0 : -gravity, direction.y) * speed;
+        movement = new Vector3(direction.x * speed, isGrounded ? 0 : -gravity, direction.y * speed);
         this.GetComponent<CharacterController>().Move(movement * Time.deltaTime);
 
-        Debug.Log(direction);
         DirectionAngle = Mathf.Atan2(-zSpeed, -xSpeed) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, DirectionAngle, 0);
         xRotateBonhomme.localEulerAngles = new Vector3(speed*30, 0, 0);  
