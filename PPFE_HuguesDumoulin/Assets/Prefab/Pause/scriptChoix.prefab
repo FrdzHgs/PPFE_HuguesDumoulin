@@ -431,16 +431,16 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5433784221376968841}
-  - component: {fileID: -8698833263913870183}
+  - component: {fileID: 6650054198857995880}
+  - component: {fileID: 484714041385025103}
   m_Layer: 0
-  m_Name: scriptPause
+  m_Name: scriptChoix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5433784221376968841
+--- !u!224 &6650054198857995880
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,7 +448,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5055055967622980190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -975.61646}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -458,10 +458,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 939.78705, y: 580.1193}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-8698833263913870183
+--- !u!114 &484714041385025103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,17 +470,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5055055967622980190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d01af1073176f4487393c5fc68df53, type: 3}
+  m_Script: {fileID: 11500000, guid: 9207dd1d55e173e42920dcb59f659362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPause: 0
-  UIPause: {fileID: 5055055968732704987}
+  UIMenu: {fileID: 5055055968732704987}
   Result: {fileID: 5055055968013892794}
   Explication: {fileID: 5055055968603837530}
   Conseil: {fileID: 2327474552477305731}
   playerInput: {fileID: 5055055968013892795}
-  canvasArray: []
   cameralvl: {fileID: 0}
+  canvaMenu: {fileID: 0}
   listeConseil:
   - "La pause n'arr\xEAte pas le challenge !"
   - Certaine combinaisons de touches ne sont pas possible
@@ -831,7 +830,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "KlavioMany/?/Pause\n\nListe des Commandes : \n\n\"Reprendre\"\n\tReprend
-    le niveau\n\n\"Recommencer\"\n\tRecommence le niveau\n\n\"Quitter\"\n\tQuitte
+    le challenge\n\n\"Recommencer\"\n\tRecommence le challenge\n\n\"Quitter\"\n\tQuitte
     le challenge"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6409d3ede707f242b9235744ff0a5a3, type: 2}
@@ -939,7 +938,7 @@ RectTransform:
   - {fileID: 5055055967548938360}
   - {fileID: 5055055968913666579}
   - {fileID: 5688218922387418537}
-  m_Father: {fileID: 5433784221376968841}
+  m_Father: {fileID: 6650054198857995880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

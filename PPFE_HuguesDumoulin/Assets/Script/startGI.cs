@@ -7,7 +7,10 @@ public class startGI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GI.InitGame();
+        if(GI.isSet == false)
+        {
+            GI.InitGame();
+        }       
     }
 
     // Update is called once per frame
