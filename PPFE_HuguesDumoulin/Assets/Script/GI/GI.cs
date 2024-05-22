@@ -10,6 +10,7 @@ public static class GI
     public static int current;
     public static List<string> Niveaux = new List<string>();
     public static bool isSet = false;
+    public static List<KeyCode> inputList = new List<KeyCode>();
 
 	public static void InitGame()
 	{
@@ -33,5 +34,20 @@ public static class GI
         }
         current++;
         SceneManager.LoadScene(Niveaux[current - 1], LoadSceneMode.Single);
+        inputList.Clear();
+    }
+
+    public static void pressCounterAdd(KeyCode press)
+    {
+        if(!inputList.Contains(press))
+        {
+            inputList.Add(press);
+            Debug.Log(press);
+        }
+    }
+
+    public static void pressCounterRemove(KeyCode press)
+    {
+        inputList.Remove(press);
     }
 }

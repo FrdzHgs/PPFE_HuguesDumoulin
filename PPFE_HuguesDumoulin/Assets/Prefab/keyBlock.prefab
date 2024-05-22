@@ -248,6 +248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VitesseMonte: 3.5
   VitesseDescente: 2
+  isText: 0
+  self: {fileID: 7984268959614541950}
+  cible: {fileID: 0}
   keyBlock: 97
 --- !u!1 &4763947778874874943
 GameObject:

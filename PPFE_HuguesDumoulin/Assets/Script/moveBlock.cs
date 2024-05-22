@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class moveBlock : MonoBehaviour
 {
     public float VitesseMonte;
     public float VitesseDescente;
+    public bool isText = false;
+    public TMP_Text self,cible;
 
     public KeyCode keyBlock;
     
@@ -21,8 +24,16 @@ public class moveBlock : MonoBehaviour
     {
         if(Input.GetKeyDown(keyBlock))
         {
-            goUp = true;
-            StartCoroutine(moveUp());
+            if(GI.inputList.Count < 3 || GI.inputList.Contains(keyBlock) && GI.inputList.Count < 4)
+            {
+                goUp = true;
+                StartCoroutine(moveUp());
+                if(isText == true)
+                {
+                    if(cible.text.Length < 8){cible.text = cible.text + self.text;}
+                }
+            }
+            GI.pressCounterAdd(keyBlock);
         }
 
         if(Input.GetKey(keyBlock))
@@ -38,6 +49,7 @@ public class moveBlock : MonoBehaviour
             goUp = false;
             StartCoroutine(moveDown());
             StopCoroutine(moveUp());
+            GI.pressCounterRemove(keyBlock);
         }
 
     }
