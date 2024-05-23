@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class scriptEndLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public controllerFinNiveau UIFin;
+
     void Start()
     {
         
@@ -18,8 +19,6 @@ public class scriptEndLevel : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        GI.InitGame();
-        GI.NextLvl();
-        Debug.Log("cacaac");
+        UIFin.endLvl();
     }
 }

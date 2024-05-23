@@ -31,7 +31,7 @@ public class scriptQuestionnaire : MonoBehaviour
         }
         else
         {
-            cible.text = "";
+            StartCoroutine(Fail());
         }
     }
 
@@ -50,6 +50,13 @@ public class scriptQuestionnaire : MonoBehaviour
             default :
                 break;          
         }
+    }
+    IEnumerator Fail()
+    {
+        cible.color = new Color(1,0,0,1);
+        yield return new WaitForSecondsRealtime(0.75f);
+        cible.text = "";
+        cible.color = new Color32(30,233,0,255);
     }
 
     IEnumerator moveVictoryCamion()

@@ -9,6 +9,8 @@ public class moveBlock : MonoBehaviour
     public float VitesseDescente;
     public bool isText = false;
     public TMP_Text self,cible;
+    public Renderer mat;
+    public Material[] listeMat;
 
     public KeyCode keyBlock;
     
@@ -31,6 +33,7 @@ public class moveBlock : MonoBehaviour
                 if(isText == true)
                 {
                     if(cible.text.Length < 8){cible.text = cible.text + self.text;}
+                    else{cible.text = "";}
                 }
             }
             GI.pressCounterAdd(keyBlock);
@@ -67,6 +70,7 @@ public class moveBlock : MonoBehaviour
         if(this.transform.position.y > -0.03f && goUp == true)
         {
             this.transform.position = new Vector3(this.transform.position.x,0,this.transform.position.z);
+            mat.material = listeMat[1];
         }
     }
 
@@ -83,6 +87,7 @@ public class moveBlock : MonoBehaviour
         if(this.transform.position.y < -0.97f && goUp == false)
         {
             this.transform.position = new Vector3(this.transform.position.x,-1,this.transform.position.z);
+            mat.material = listeMat[0];
         }
     }
 }

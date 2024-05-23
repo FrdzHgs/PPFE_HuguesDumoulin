@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class playerController : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class playerController : MonoBehaviour
     public Transform xRotateBonhomme;
     public float gravity;
 
+    public TMP_Text startText;
+
     private float DirectionAngle = 0f;
 
     void Start()
     {
-        
+        StartCoroutine(launchLvl());
     }
 
     void Update()
@@ -71,5 +74,18 @@ public class playerController : MonoBehaviour
         DirectionAngle = Mathf.Atan2(-zSpeed, -xSpeed) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, DirectionAngle, 0);
         xRotateBonhomme.localEulerAngles = new Vector3(speed*30, 0, 0);  
+    }
+
+    IEnumerator launchLvl()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        float temps = 0f;
+        while(temps < 10f)
+        {
+            startText.color = new Color(30f/255f, 233f/255f,0 ,1f - (0.1f * temps));
+            yield return 0;
+            temps = temps + Time.fixedDeltaTime;
+        }
+        startText.text = "";
     }
 }

@@ -479,11 +479,14 @@ MonoBehaviour:
   Explication: {fileID: 5055055968603837530}
   Conseil: {fileID: 2327474552477305731}
   playerInput: {fileID: 5055055968013892795}
-  canvasArray: []
+  canvasArray:
+  - {fileID: 0}
+  - {fileID: 0}
   cameralvl: {fileID: 0}
   listeConseil:
   - "La pause n'arr\xEAte pas le challenge !"
   - Certaine combinaisons de touches ne sont pas possible
+  - "N'h\xE9sitez pas \xE0 \xE9changer de place !"
 --- !u!1 &5055055967886169429
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,8 +800,8 @@ RectTransform:
   m_Father: {fileID: 5055055968732704991}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 760, y: 1040}
   m_Pivot: {x: 0, y: 0.5}

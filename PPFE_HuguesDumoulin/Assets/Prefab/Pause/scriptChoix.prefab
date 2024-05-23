@@ -483,6 +483,7 @@ MonoBehaviour:
   listeConseil:
   - "La pause n'arr\xEAte pas le challenge !"
   - Certaine combinaisons de touches ne sont pas possible
+  - "N'h\xE9sitez pas \xE0 \xE9changer de place !"
 --- !u!1 &5055055967886169429
 GameObject:
   m_ObjectHideFlags: 0

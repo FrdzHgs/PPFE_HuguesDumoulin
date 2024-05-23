@@ -6,9 +6,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-public class controllerPause : MonoBehaviour
+public class controllerFinNiveau : MonoBehaviour
 {
-    public bool isPause = false; 
+    public bool isEnd = false;
     public GameObject UIPause;
     public TMP_Text Result, Explication, Conseil;
     public InputField playerInput;
@@ -21,7 +21,7 @@ public class controllerPause : MonoBehaviour
 
     void Start()
     {
-        UIPause.SetActive(isPause);
+        UIPause.SetActive(isEnd);
         levelName = SceneManager.GetActiveScene().name;
         Explication.text = Explication.text.Replace("?",levelName);
     }
@@ -29,12 +29,7 @@ public class controllerPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Pause"))
-        {
-            StartCoroutine(setActive());
-        }
-
-        if(isPause)
+        if(isEnd)
         {
             playerInput.ActivateInputField();
         }
@@ -45,13 +40,12 @@ public class controllerPause : MonoBehaviour
 
         Result.text = playerInput.text + verticalString;
 
-        if(Input.GetKeyDown(KeyCode.Return) && isPause)
+        if(Input.GetKeyDown(KeyCode.Return) && isEnd)
         {
             switch(playerInput.text)
             {
-                case "Reprendre" :
-                    Time.timeScale = 1;
-                    StartCoroutine(setActive());
+                case "Suivant" :
+                    GI.NextLvl();
                     break;
 
                 case "Recommencer" :
@@ -60,7 +54,7 @@ public class controllerPause : MonoBehaviour
                     break;
 
                 case "Quitter" :
-                    isPause = false;
+                    isEnd = false;
                     SceneManager.LoadScene("N_MenuPrincipal", LoadSceneMode.Single);
                     break;
                 
@@ -71,13 +65,17 @@ public class controllerPause : MonoBehaviour
         }
     }
 
+    public void endLvl()
+    {
+        StartCoroutine(setActive());
+    }
+
     IEnumerator setActive()
     {
-        isPause = !isPause;
-        UIPause.SetActive(isPause);
-        playerInput.ActivateInputField();
+        isEnd = true;
+        UIPause.SetActive(isEnd);
         playerInput.text = "";
-        if(isPause)
+        if(isEnd)
         {
             Time.timeScale = 0;
             cameralvl.rect = new Rect(0.5f,0.5f,0.5f,0.5f);
@@ -92,8 +90,12 @@ public class controllerPause : MonoBehaviour
             Conseil.text = "Conseil :\n\t?";
         }
 
+        yield return new WaitForSecondsRealtime(0.75f);
+
+        playerInput.ActivateInputField();
+
         bool isVertical = true;
-        while(isPause)
+        while(isEnd)
         {
             if(isVertical)
             {
