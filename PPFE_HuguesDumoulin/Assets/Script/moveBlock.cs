@@ -12,13 +12,15 @@ public class moveBlock : MonoBehaviour
     public Renderer mat;
     public Material[] listeMat;
 
+    public AudioSource keyPress, keyRelease;
+
     public KeyCode keyBlock;
     
     private bool goUp = true;
 
     void Start()
     {
-
+        GI.lvlText = "";
     }
 
     // Update is called once per frame
@@ -35,6 +37,8 @@ public class moveBlock : MonoBehaviour
                     if(cible.text.Length < 8){cible.text = cible.text + self.text;}
                     else{cible.text = "";}
                 }
+                GI.lvlText = GI.lvlText + self.text;
+                keyPress.Play(0);
             }
             GI.pressCounterAdd(keyBlock);
         }
@@ -49,6 +53,10 @@ public class moveBlock : MonoBehaviour
 
         if(Input.GetKeyUp(keyBlock))
         {
+            if(GI.inputList.Contains(keyBlock))
+            {
+                keyRelease.Play(0);
+            }
             goUp = false;
             StartCoroutine(moveDown());
             StopCoroutine(moveUp());

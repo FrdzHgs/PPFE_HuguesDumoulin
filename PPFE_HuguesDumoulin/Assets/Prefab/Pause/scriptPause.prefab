@@ -483,6 +483,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   cameralvl: {fileID: 0}
+  isEnd: {fileID: 0}
   listeConseil:
   - "La pause n'arr\xEAte pas le challenge !"
   - Certaine combinaisons de touches ne sont pas possible
@@ -800,9 +801,9 @@ RectTransform:
   m_Father: {fileID: 5055055968732704991}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 520}
   m_SizeDelta: {x: 760, y: 1040}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5055055968603837529
@@ -834,8 +835,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "KlavioMany/?/Pause\n\nListe des Commandes : \n\n\"Reprendre\"\n\tReprend
-    le niveau\n\n\"Recommencer\"\n\tRecommence le niveau\n\n\"Quitter\"\n\tQuitte
-    le challenge"
+    le niveau\n\n\"Recommencer\"\n\tRecommence le niveau\n\n\"Quitter\"\n\tRevient
+    au menu principale"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6409d3ede707f242b9235744ff0a5a3, type: 2}
   m_sharedMaterial: {fileID: 4146811472971169993, guid: c6409d3ede707f242b9235744ff0a5a3, type: 2}

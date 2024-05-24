@@ -6,14 +6,14 @@ using TMPro;
 public class scriptQuestionnaire : MonoBehaviour
 {
     public string answer;
-    public TMP_Text cible;
+    public TMP_Text cible,reponseFake;
     public GameObject toMove;
     public AnimationCurve Curve;
     private bool win = false;
 
     void Start()
     {
-        
+        reponseFake.text = answer;
     }
 
     // Update is called once per frame
@@ -27,6 +27,8 @@ public class scriptQuestionnaire : MonoBehaviour
         if(cible.text == answer && win == false)
         {
             Victory();
+            cible.fontSize = 0;
+            reponseFake.fontSize = 1;
             win = true;
         }
         else
@@ -62,9 +64,9 @@ public class scriptQuestionnaire : MonoBehaviour
     IEnumerator moveVictoryCamion()
     {
         float temps = 0;
-        while(temps < 50)
+        while(temps < 15)
         {
-            toMove.transform.position = new Vector3(8f - Curve.Evaluate(temps/50)*8, -2.525f, -9f);
+            toMove.transform.position = new Vector3(8f - Curve.Evaluate(temps/15)*8, -2.525f, -9f);
             yield return 0;
             temps = temps + Time.fixedDeltaTime;
         }        
@@ -73,9 +75,9 @@ public class scriptQuestionnaire : MonoBehaviour
     IEnumerator moveVictoryCaillou()
     {
         float temps = 0;
-        while(temps < 50)
+        while(temps < 15)
         {
-            toMove.transform.position = new Vector3(1.64f, 8.1f - Curve.Evaluate(temps/50)*9, -6.59f);
+            toMove.transform.position = new Vector3(1.64f, 8.1f - Curve.Evaluate(temps/15)*9, -6.59f);
             yield return 0;
             temps = temps + Time.fixedDeltaTime;
         }        

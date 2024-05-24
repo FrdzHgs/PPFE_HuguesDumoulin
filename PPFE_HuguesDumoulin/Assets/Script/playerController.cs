@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -22,16 +23,50 @@ public class playerController : MonoBehaviour
 
     private float DirectionAngle = 0f;
 
+    public Image endImage;
+
+    private bool isFail = false;
+
     void Start()
     {
         StartCoroutine(launchLvl());
+        if(GI.isFailing == true)
+        {
+            GI.isFailing = false;
+            StartCoroutine(startFail());
+        }
     }
 
     void Update()
     {
-        if(this.transform.position.y < 0.5f)
+        if(this.transform.position.y < 0.5f && isFail == false)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            isFail = true;
+            GI.isFailing = true;
+            StartCoroutine(failLvl());
+        }
+    }
+
+    IEnumerator failLvl()
+    {
+        float temps = 0;
+        while(temps < 3)
+        {
+            temps = temps + Time.fixedDeltaTime;
+            endImage.color = new Color(0,0,0,temps/3f);
+            yield return 0;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator startFail()
+    {
+        float temps = 0;
+        while(temps < 3)
+        {
+            temps = temps + Time.fixedDeltaTime;
+            endImage.color = new Color(0,0,0,1-temps/3f);
+            yield return 0;
         }
     }
 

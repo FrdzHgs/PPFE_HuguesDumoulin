@@ -16,6 +16,7 @@ public class controllerPause : MonoBehaviour
     private int buttonSelect;
     private string verticalString,levelName;
     public Camera cameralvl;
+    public controllerFinNiveau isEnd;
 
     public string[] listeConseil;
 
@@ -29,7 +30,7 @@ public class controllerPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Pause"))
+        if(Input.GetButtonDown("Pause") && !isEnd.isEnd)
         {
             StartCoroutine(setActive());
         }
@@ -55,11 +56,13 @@ public class controllerPause : MonoBehaviour
                     break;
 
                 case "Recommencer" :
+                    Time.timeScale = 1;
                     levelName = SceneManager.GetActiveScene().name;
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                     break;
 
                 case "Quitter" :
+                    Time.timeScale = 1;
                     isPause = false;
                     SceneManager.LoadScene("N_MenuPrincipal", LoadSceneMode.Single);
                     break;

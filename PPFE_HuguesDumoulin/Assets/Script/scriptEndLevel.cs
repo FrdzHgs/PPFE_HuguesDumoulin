@@ -5,6 +5,7 @@ using UnityEngine;
 public class scriptEndLevel : MonoBehaviour
 {
     public controllerFinNiveau UIFin;
+    public bool isFin = false;
 
     void Start()
     {
@@ -19,6 +20,6 @@ public class scriptEndLevel : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        UIFin.endLvl();
+        UIFin.endLvl(isFin);
     }
 }

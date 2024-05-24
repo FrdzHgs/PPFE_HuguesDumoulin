@@ -19,8 +19,13 @@ public class controllerFinNiveau : MonoBehaviour
 
     public string[] listeConseil;
 
+    public TMP_Text textIfEnd;
+
+    private bool isEndGame = false;
+
     void Start()
     {
+        playerInput.DeactivateInputField();
         UIPause.SetActive(isEnd);
         levelName = SceneManager.GetActiveScene().name;
         Explication.text = Explication.text.Replace("?",levelName);
@@ -29,15 +34,6 @@ public class controllerFinNiveau : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isEnd)
-        {
-            playerInput.ActivateInputField();
-        }
-        else
-        {
-            playerInput.DeactivateInputField();
-        }
-
         Result.text = playerInput.text + verticalString;
 
         if(Input.GetKeyDown(KeyCode.Return) && isEnd)
@@ -45,17 +41,27 @@ public class controllerFinNiveau : MonoBehaviour
             switch(playerInput.text)
             {
                 case "Suivant" :
-                    GI.NextLvl();
+                    Time.timeScale = 1;
+                    if(!isEndGame){GI.NextLvl();}
+                    else{playerInput.text = "";}
                     break;
 
                 case "Recommencer" :
+                    Time.timeScale = 1;
                     levelName = SceneManager.GetActiveScene().name;
                     SceneManager.LoadScene(levelName, LoadSceneMode.Single);
                     break;
 
                 case "Quitter" :
+                    Time.timeScale = 1;
                     isEnd = false;
                     SceneManager.LoadScene("N_MenuPrincipal", LoadSceneMode.Single);
+                    break;
+
+                case "Fermer" :
+                    Time.timeScale = 1;
+                    if(isEndGame){Application.Quit();}
+                    else{playerInput.text = "";}
                     break;
                 
                 default :
@@ -65,9 +71,16 @@ public class controllerFinNiveau : MonoBehaviour
         }
     }
 
-    public void endLvl()
+    public void endLvl(bool fin)
     {
+        isEndGame = fin;
+        if(fin)
+        {
+            Explication.text = textIfEnd.text;
+            Explication.fontSize = 36;
+        }
         StartCoroutine(setActive());
+        Explication.text = Explication.text.Replace("!",GI.lvlText);
     }
 
     IEnumerator setActive()

@@ -11,7 +11,9 @@ public static class GI
     public static List<string> Niveaux = new List<string>();
     public static bool isSet = false;
     public static List<KeyCode> inputList = new List<KeyCode>();
-
+    public static string lvlText = "";
+    public static bool isFailing = false;
+    
 	public static void InitGame()
 	{
 		niveauActuel = 0;
